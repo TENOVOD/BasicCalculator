@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +30,14 @@ class MainActivity : AppCompatActivity() {
 
         val resultTextView = findViewById<TextView>(R.id.result_view)
 
-        resultTextView.text="JOJO"
+        val numberStringBuilder = StringBuilder()
+
+        oneButton.setOnClickListener {
+
+            numberStringBuilder.append(1)
+
+            resultTextView.text=numberStringBuilder
+        }
 
     }
 }
