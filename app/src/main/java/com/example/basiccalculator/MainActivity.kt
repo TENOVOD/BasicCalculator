@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import com.ezylang.evalex.Expression
 import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
@@ -28,6 +29,9 @@ class MainActivity : AppCompatActivity() {
         val plusButton = findViewById<Button>(R.id. plus_button)
         val multiplyButton = findViewById<Button>(R.id. multiply_button)
         val pointButton = findViewById<Button>(R.id. point_button)
+        val divisionButton = findViewById<Button>(R.id.division_button)
+        val clearButton = findViewById<Button>(R.id.clear_button)
+
 
         val resultTextView = findViewById<TextView>(R.id.result_view)
 
@@ -104,5 +108,24 @@ class MainActivity : AppCompatActivity() {
             numberStringBuilder.append(".")
             resultTextView.text=numberStringBuilder
         }
+
+        divisionButton.setOnClickListener {
+            numberStringBuilder.append("/")
+            resultTextView.text=numberStringBuilder
+        }
+
+        equalButton.setOnClickListener {
+            val expression = Expression(numberStringBuilder.toString())
+            resultTextView.text=expression.evaluate().value.toString()
+            numberStringBuilder.clear()
+            numberStringBuilder.append(expression.evaluate().value.toString())
+        }
+
+        clearButton.setOnClickListener {
+            numberStringBuilder.clear()
+            resultTextView.text=numberStringBuilder
+        }
+
+
     }
 }
