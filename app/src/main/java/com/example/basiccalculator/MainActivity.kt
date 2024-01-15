@@ -5,37 +5,20 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import com.example.basiccalculator.databinding.ActivityMainBinding
 import com.ezylang.evalex.Expression
 import java.lang.StringBuilder
 
 class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+
+    private lateinit var binding: ActivityMainBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) = with(binding) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = root
+        setContentView(view)
 
-        val zeroButton = findViewById<Button>(R.id.zero_button)
-        val oneButton = findViewById<Button>(R.id.one_button)
-        val twoButton = findViewById<Button>(R.id.two_button)
-        val threeButton = findViewById<Button>(R.id.three_button)
-        val fourButton = findViewById<Button>(R.id.four_button)
-        val fiveButton = findViewById<Button>(R.id.five_button)
-        val sixButton = findViewById<Button>(R.id.six_button)
-        val sevenButton = findViewById<Button>(R.id.seven_button)
-        val eightButton = findViewById<Button>(R.id.eight_button)
-        val nineButton = findViewById<Button>(R.id.nine_button)
-
-
-        val equalButton = findViewById<Button>(R.id.equal_button)
-        val minusButton = findViewById<Button>(R.id.minus_button)
-        val plusButton = findViewById<Button>(R.id. plus_button)
-        val multiplyButton = findViewById<Button>(R.id. multiply_button)
-        val pointButton = findViewById<Button>(R.id. point_button)
-        val divisionButton = findViewById<Button>(R.id.division_button)
-
-        val clearButton = findViewById<Button>(R.id.clear_button)
-        val resetButton = findViewById<Button>(R.id.reset_button)
-        val leftBracketButton =findViewById<Button>(R.id.left_bracket_button)
-        val rightBracketButton=findViewById<Button>(R.id.right_bracket_button)
 
         val resultTextView = findViewById<TextView>(R.id.result_view)
 
@@ -43,97 +26,97 @@ class MainActivity : AppCompatActivity() {
 
         zeroButton.setOnClickListener {
             numberStringBuilder.append(0)
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
 
         oneButton.setOnClickListener {
             numberStringBuilder.append(1)
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
         twoButton.setOnClickListener {
             numberStringBuilder.append(2)
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
         threeButton.setOnClickListener {
             numberStringBuilder.append(3)
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
         fourButton.setOnClickListener {
             numberStringBuilder.append(4)
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
         fiveButton.setOnClickListener {
             numberStringBuilder.append(5)
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
         sixButton.setOnClickListener {
             numberStringBuilder.append(6)
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
         sevenButton.setOnClickListener {
             numberStringBuilder.append(7)
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
         eightButton.setOnClickListener {
             numberStringBuilder.append(8)
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
         nineButton.setOnClickListener {
             numberStringBuilder.append(9)
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
 
         plusButton.setOnClickListener {
             numberStringBuilder.append("+")
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
         minusButton.setOnClickListener {
             numberStringBuilder.append("-")
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
         multiplyButton.setOnClickListener {
             numberStringBuilder.append("*")
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
         pointButton.setOnClickListener {
             numberStringBuilder.append(".")
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
         divisionButton.setOnClickListener {
             numberStringBuilder.append("/")
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
         leftBracketButton.setOnClickListener {
             numberStringBuilder.append("(")
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
         rightBracketButton.setOnClickListener {
             numberStringBuilder.append(")")
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
         equalButton.setOnClickListener {
-            try{
+            try {
                 val expression = Expression(numberStringBuilder.toString())
-                resultTextView.text=expression.evaluate().value.toString()
+                resultTextView.text = expression.evaluate().value.toString()
 
                 numberStringBuilder.clear()
                 numberStringBuilder.append(expression.evaluate().value.toString())
-            }catch (t:Throwable){
+            } catch (t: Throwable) {
                 Toast.makeText(this@MainActivity, "Exception:$t", Toast.LENGTH_LONG).show()
             }
 
@@ -141,11 +124,11 @@ class MainActivity : AppCompatActivity() {
 
         clearButton.setOnClickListener {
             numberStringBuilder.clear()
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
         resetButton.setOnClickListener {
             numberStringBuilder.deleteCharAt(numberStringBuilder.lastIndex)
-            resultTextView.text=numberStringBuilder
+            resultTextView.text = numberStringBuilder
         }
 
 
