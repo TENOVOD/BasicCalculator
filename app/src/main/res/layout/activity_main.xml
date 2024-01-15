@@ -164,7 +164,7 @@
 
     <Button
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/division_button"
+        app:layout_constraintRight_toLeftOf="@id/reset_button"
         app:layout_constraintBottom_toTopOf="@id/multiply_button"
         android:text="Clear"
         android:id="@+id/clear_button"
@@ -172,8 +172,39 @@
         android:layout_height="wrap_content"
 
         />
+
     <Button
         app:layout_constraintLeft_toRightOf="@+id/clear_button"
+        app:layout_constraintRight_toLeftOf="@id/left_bracket_button"
+        app:layout_constraintBottom_toTopOf="@id/multiply_button"
+        android:text="Res"
+        android:id="@+id/reset_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        />
+    <Button
+        app:layout_constraintLeft_toRightOf="@+id/reset_button"
+        app:layout_constraintRight_toLeftOf="@id/right_bracket_button"
+        app:layout_constraintBottom_toTopOf="@id/multiply_button"
+        android:text="("
+        android:id="@+id/left_bracket_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        />
+    <Button
+        app:layout_constraintLeft_toRightOf="@+id/left_bracket_button"
+        app:layout_constraintRight_toLeftOf="@id/division_button"
+        app:layout_constraintBottom_toTopOf="@id/multiply_button"
+        android:text=")"
+        android:id="@+id/right_bracket_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+
+        />
+
+    <Button
+        app:layout_constraintLeft_toRightOf="@+id/right_bracket_button"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toTopOf="@id/multiply_button"
         android:text="/"
