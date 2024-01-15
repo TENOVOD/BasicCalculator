@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import com.ezylang.evalex.Expression
 import java.lang.StringBuilder
 
@@ -115,10 +116,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         equalButton.setOnClickListener {
-            val expression = Expression(numberStringBuilder.toString())
-            resultTextView.text=expression.evaluate().value.toString()
-            numberStringBuilder.clear()
-            numberStringBuilder.append(expression.evaluate().value.toString())
+            try{
+                val expression = Expression(numberStringBuilder.toString())
+                resultTextView.text=expression.evaluate().value.toString()
+
+                numberStringBuilder.clear()
+                numberStringBuilder.append(expression.evaluate().value.toString())
+            }catch (t:Throwable){
+                Toast.makeText(this@MainActivity, "Exception:$t", Toast.LENGTH_LONG).show()
+            }
+
         }
 
         clearButton.setOnClickListener {
